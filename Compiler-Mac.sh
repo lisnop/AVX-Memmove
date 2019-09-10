@@ -6,8 +6,8 @@ set +v
 
 # Compile
 for f in $PWD/*.c; do
-  echo "gcc" -ffreestanding -march=skylake -mavx2 -m64 -fpie -fno-stack-protector -mno-red-zone -O3 -g3 -Wall -Wextra -Wdouble-promotion -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"${f%.*}.d" -MT"${f%.*}.o" -o "${f%.*}.o" "${f%.*}.c"
-  "gcc" -ffreestanding -march=skylake -mavx2 -m64 -fpie -fno-stack-protector -mno-red-zone -O3 -g3 -Wall -Wextra -Wdouble-promotion -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"${f%.*}.d" -MT"${f%.*}.o" -o "${f%.*}.o" "${f%.*}.c"
+  echo "gcc" -ffreestanding -march=skylake -mavx2 -O3 -fpie -fomit-frame-pointer -fno-common -fno-zero-initialized-in-bss -fno-stack-protector -m64 -mno-red-zone -g3 -Wall -Wextra -Wdouble-promotion -Wpedantic -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"${f%.*}.d" -MT"${f%.*}.o" -o "${f%.*}.o" "${f%.*}.c"
+  "gcc" -ffreestanding -march=skylake -mavx2 -O3 -fpie -fomit-frame-pointer -fno-common -fno-zero-initialized-in-bss -fno-stack-protector -m64 -mno-red-zone -g3 -Wall -Wextra -Wdouble-promotion -Wpedantic -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"${f%.*}.d" -MT"${f%.*}.o" -o "${f%.*}.o" "${f%.*}.c"
 done
 
 # Link
